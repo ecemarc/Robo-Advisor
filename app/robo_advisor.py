@@ -37,14 +37,17 @@ def usd_price(last_closing_price):
 
 
 recent_highs = []  # creating a list of highs to find the highest
+recent_lows = []
 
 for date in dates:
     recent_high = time_series[date]["2. high"]
     recent_highs.append(float(recent_high))
+    recent_low = time_series[date]["3. low"]
+    recent_lows.append(float(recent_low))
 
 
 recent_highest = max(recent_highs)  # creating a list and
-
+recent_lowest = min(recent_lows)
 #
 #
 #
@@ -59,7 +62,7 @@ print("-------------------------")
 print(f"LATEST DAY: {last_refreshed}")
 print(f"LATEST CLOSE: {usd_price(float(last_closing_price))}")
 print(f"RECENT HIGH: {usd_price(float(recent_highest))}")
-print("RECENT LOW: $99,000.00")
+print(f"RECENT LOW: {usd_price(float(recent_lowest))}")
 print("-------------------------")
 print("RECOMMENDATION: BUY!")
 print("RECOMMENDATION REASON: TODO")

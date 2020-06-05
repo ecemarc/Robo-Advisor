@@ -36,6 +36,15 @@ def usd_price(last_closing_price):
 # breakpoint()
 
 
+recent_highs = []  # creating a list of highs to find the highest
+
+for date in dates:
+    recent_high = time_series[date]["2. high"]
+    recent_highs.append(float(recent_high))
+
+
+recent_highest = max(recent_highs)  # creating a list and
+
 #
 #
 #
@@ -49,7 +58,7 @@ print("REQUEST AT: 2018-02-20 02:00pm")
 print("-------------------------")
 print(f"LATEST DAY: {last_refreshed}")
 print(f"LATEST CLOSE: {usd_price(float(last_closing_price))}")
-print("RECENT HIGH: $101,000.00")
+print(f"RECENT HIGH: {usd_price(float(recent_highest))}")
 print("RECENT LOW: $99,000.00")
 print("-------------------------")
 print("RECOMMENDATION: BUY!")

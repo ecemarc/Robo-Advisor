@@ -19,7 +19,15 @@ parsed_response = json.loads(response.text)
 
 last_refreshed = parsed_response["Meta Data"]["3. Last Refreshed"]
 
-last_closing_price = parsed_response["Time Series (5min)"]["2020-06-05 14:50:00"]["4. close"]
+
+time_series = parsed_response["Time Series (5min)"]
+
+dates = list(time_series.keys())
+
+# taking the "0" from dates list "2020-06-05 14:50:00"   //is latest date first?? MAKE SURE
+latest_5min = dates[0]
+
+last_closing_price = time_series[latest_5min]["4. close"]
 
 
 def usd_price(last_closing_price):

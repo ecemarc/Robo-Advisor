@@ -19,6 +19,12 @@ parsed_response = json.loads(response.text)
 
 last_refreshed = parsed_response["Meta Data"]["3. Last Refreshed"]
 
+last_closing_price = parsed_response["Time Series (5min)"]["2020-06-05 14:50:00"]["4. close"]
+
+
+def usd_price(last_closing_price):
+    return f"${last_closing_price:,.2f}"  # > $12,000.71
+
 # breakpoint()
 
 
@@ -34,7 +40,7 @@ print("REQUESTING STOCK MARKET DATA...")
 print("REQUEST AT: 2018-02-20 02:00pm")
 print("-------------------------")
 print(f"LATEST DAY: {last_refreshed}")
-print("LATEST CLOSE: $100,000.00")
+print(f"LATEST CLOSE: {usd_price(float(last_closing_price))}")
 print("RECENT HIGH: $101,000.00")
 print("RECENT LOW: $99,000.00")
 print("-------------------------")
